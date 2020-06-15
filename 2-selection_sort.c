@@ -15,7 +15,7 @@ void selection_sort(int *array, size_t size)
 		return;
 
 	for (first_value = 0; first_value < size - 1; first_value++)
-	{/*Iterate start thru 1st val of array*/
+	{/*Iterate start thru 1st value of array*/
 		hold_value = first_value;/*store first value*/
 		for (second_value = first_value + 1; second_value < size; second_value++)
 		{/*Iterate start thru value+1 of array*/
