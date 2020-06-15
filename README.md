@@ -5,5 +5,5 @@
 ## This folder contains the project "Sorting algorithms and Big O" and it's associated tasks:
 ### 0. Bubble sort
 ### 1. Insertion sort
-### 2. Selecttion sort
+### 2. Selection sort
 ### 3. Quick sort
