@@ -1,47 +1,48 @@
-#include "sort.h" 
+#include "sort.h"
 
 /**
- * insertion_sort_list -
- *
- * Return:
+ * insertion_sort_list - sort a doubly linked list using insertion method
+ * @list: list to sort
  */
 void insertion_sort_list(listint_t **list)
 {
-	int current[1];
-	listint_t **position, *temp;
+	listint_t *current = *list, *pointer, *sorted;
+	int x;
 
-	position = list;
-	(*position) = (*position)->next;
-	
-	for (; (*position)->next != NULL; *position = (*position)->next) /* while list continues */
+	if (current->next)
 	{
-		current[0] = (*position)->n;
-		temp = create_listint(current, 1);
-
-/* decrement through unsorted list (left of position) until value is greater than position or we reach first node */
-		while (((*position)->prev != NULL) && ((*position)->prev->n >= temp->n)) 
+		current = current->next;
+		while (current)
 		{
-			/* make new node of position attributes */
-			temp->prev = (*position)->prev;
-			temp->next = (*position)->next;
-
-			/* make current node attributes of previous */
-			(*position)->prev = (*position)->prev->prev; 
-			(*position)->next = (*position)->prev->next; 
-
-			/* make previous same as temp */
-			(*position)->prev = temp;
-			(*position)->prev->next = ->next;
-		}	
-/* if previous is not greater then swap this position (which is >) with temp */
-		if ((*position)->prev->n < temp->n) 
-		{
-			(*position)->prev->next = temp;
-			(*position)->next->prev = temp;
-			free(temp);
+			pointer = current;
+			sorted = current->prev;
+			current = current->next;
+			x = 0;
+			for ( ; ((sorted) && sorted->n > pointer->n) ; sorted = sorted->prev)
+				x++;
+			if (x)
+			{
+				pointer->prev->next = pointer->next;
+				if (pointer->next)
+					pointer->next->prev = pointer->prev;
+				if (!sorted)
+				{
+					sorted = *list;
+					pointer->prev = NULL;
+					pointer->next = sorted;
+					pointer->next->prev = pointer;
+					*list = pointer;
+				}
+				else
+				{
+					sorted = sorted->next;
+					sorted->prev->next = pointer;
+					pointer->prev = sorted->prev;
+					sorted->prev = pointer;
+					pointer->next = sorted;
+				}
+			}
+			print_list(*list);
 		}
-		print_list(*list);
-
 	}
-
 }
