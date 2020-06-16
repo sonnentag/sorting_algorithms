@@ -44,21 +44,13 @@ void swap(listint_t *pointer, listint_t *current, listint_t **list)
 	{
 		temp = pointer->prev;
 		temp->next = current;
-		current->prev = temp;
-		pointer->prev = current;
-		pointer->next = current->next;
-		current->next = pointer;
 	}
-	else
-	{
-		pointer->next = current->next;
-		temp = pointer;
-		temp->prev = current;
-		current->prev = NULL;
-		current->next = temp;
-		temp = current;
+	current->prev = temp;
+	pointer->prev = current;
+	pointer->next = current->next;
+	current->next = pointer;
+	if (!pointer->prev)
 		*list = temp;
-	}
 
 	if (pointer->next)
 		pointer->next->prev = pointer;
