@@ -65,7 +65,6 @@ int part(int *array, int l, int r, size_t size)
 		}
 		if (array[x] != n)
 			print_array(array, size);
-			n = array[x];
 		x++;
 	}
 	s++;
