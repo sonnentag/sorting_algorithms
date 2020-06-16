@@ -27,14 +27,17 @@ listint_t *create_listint(const int *array, size_t size);
 
 /* 0 */
 void bubble_sort(int *array, size_t size);
+
 /* 1 */
 void insertion_sort_list(listint_t **list);
+void swap(listint_t *pointer, listint_t *current, listint_t **list);
+
 /* 2 */
 void selection_sort(int *array, size_t size);
+
 /* 3 */
 void quick_sort(int *array, size_t size);
 void qsort_recursion(int *array, int l, int r, size_t size);
 int part(int *array, int l, int r, size_t size);
-
 
 #endif
