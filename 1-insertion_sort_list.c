@@ -8,7 +8,7 @@ void insertion_sort_list(listint_t **list)
 {
 	listint_t *current, *pointer, *sorted, *temp;
 
-	if (!list)
+	if ((!list) || (!(*list)->next))
 		return;
 	current = *list;
 	temp = current;
@@ -44,13 +44,21 @@ void swap(listint_t *pointer, listint_t *current, listint_t **list)
 	{
 		temp = pointer->prev;
 		temp->next = current;
+		current->prev = temp;
+		pointer->prev = current;
+		pointer->next = current->next;
+		current->next = pointer;
 	}
-	current->prev = temp;
-	pointer->prev = current;
-	pointer->next = current->next;
-	current->next = pointer;
-	if (!pointer->prev)
+	else
+	{
+		pointer->next = current->next;
+		temp = pointer;
+		temp->prev = current;
+		current->prev = NULL;
+		current->next = temp;
+		temp = current;
 		*list = temp;
+	}
 
 	if (pointer->next)
 		pointer->next->prev = pointer;
