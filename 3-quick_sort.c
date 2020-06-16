@@ -15,7 +15,6 @@ void quick_sort(int *array, size_t size)
 		r = size - 1;
 	if (array)
 		qsort_recursion(array, l, r, size);
-	print_array(array, size);
 }
 
 
@@ -48,25 +47,33 @@ void qsort_recursion(int *array, int l, int r, size_t size)
  */
 int part(int *array, int l, int r, size_t size)
 {
-	int x = l, p = array[r], s = l - 1, tmp;
+	int x, p, s, tmp, n;
+
+	x = l;
+	p = array[r];
+	s = l - 1;
 
 	while (x <= r - 1)
 	{
+		n = array[x];
 		if (array[x] <= p)
 		{
 			s++;
 			tmp = array[s];
 			array[s] = array[x];
 			array[x] = tmp;
-			print_array(array, size);
 		}
+		if (array[x] != n)
+			print_array(array, size);
+			n = array[x];
 		x++;
 	}
 	s++;
 	tmp = array[s];
 	array[s] = array[x];
 	array[x] = tmp;
-	print_array(array, size);
+	if (p != array[r])
+		print_array(array, size);
 
 	return (s);
 }
