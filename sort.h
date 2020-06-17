@@ -40,4 +40,7 @@ void quick_sort(int *array, size_t size);
 void qsort_recursion(int *array, int l, int r, size_t size);
 int part(int *array, int l, int r, size_t size);
 
+/* advanced */
+void merge_sort(int *array, size_t size);
+void heap_sort(int *array, size_t size);
 #endif
