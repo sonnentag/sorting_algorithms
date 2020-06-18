@@ -15,7 +15,7 @@ void insertion_sort_list(listint_t **list)
 
 	while (current) /* starting at head of list */
 	{
-		while (current->prev) /* while we are not on the last node */
+		while (current->prev) /* while we are not on the first node */
 		{
 			pointer = current->prev; /* assign pointer to previous node */
 			sorted = pointer; /* list to the left is sorted */
